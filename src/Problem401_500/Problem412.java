@@ -1,3 +1,5 @@
+package Problem401_500;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

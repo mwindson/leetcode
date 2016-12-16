@@ -1,4 +1,4 @@
-/**
+package Problem401_500; /**
  * Created by mwindson on 2016/12/5.
  */
 
@@ -26,13 +26,13 @@ public class Problem404 {
 
     }
 
-    public static int sumOfLeftLeaves(TreeNode root) {
-        // todo
-        if (root == null) return 0;
-        if(node.left !=null){
-
-        }else {
-
-        }
-    }
+//    public static int sumOfLeftLeaves(TreeNode root) {
+//        // todo
+//        if (root == null) return 0;
+//        if(node.left !=null){
+//
+//        }else {
+//
+//        }
+//    }
 }

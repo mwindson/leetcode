@@ -1,3 +1,5 @@
+package Problem301_400;
+
 /**
  * Created by mwindson on 2016/12/5.
  * Given two strings s and t which consist of only lowercase letters.

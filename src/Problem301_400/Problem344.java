@@ -1,3 +1,5 @@
+package Problem301_400;
+
 import java.util.Scanner;
 
 /**
