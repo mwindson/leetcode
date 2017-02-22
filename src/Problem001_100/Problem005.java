@@ -9,29 +9,30 @@ import static java.lang.Math.max;
  */
 public class Problem005 {
     public static String longestPalindrome(String s) {
-        int length = s.length();
-        StringBuffer sb   = new StringBuffer(s);
-        int maxlength = 0;
-        sb.reverse();
-        String LongestS = null;
-        String ns = sb.toString();
-        for (int i = 0; i < length; i++) {
-            for (int j = i + 1; j <= length; j++) {
-                String subString = s.substring(i, j);
-                if (ns.contains(subString)) {
-                    if (maxlength < subString.length()) {
-                        LongestS = subString;
-                        maxlength=LongestS.length();
-                    }
-                }
+        String LongestS = "";
+        int currLength = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (isPalindrome(s, i - currLength - 1, i)) {
+                LongestS = s.substring(i - currLength - 1, i + 1);
+                currLength = currLength + 2;
+            } else if (isPalindrome(s, i - currLength, i)) {
+                LongestS = s.substring(i - currLength, i + 1);
+                currLength = currLength + 1;
             }
         }
         return LongestS;
     }
 
+    public static boolean isPalindrome(String s, int begin, int end) {
+        if (begin < 0) return false;
+        while (begin < end) {
+            if (s.charAt(begin++) != s.charAt(end--)) return false;
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        String input = in.next();
+        String input = "babad";
         System.out.print(longestPalindrome(input));
     }
 }

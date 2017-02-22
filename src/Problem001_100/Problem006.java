@@ -7,31 +7,26 @@ import java.util.Scanner;
  */
 public class Problem006 {
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        String s = in.nextLine();
-        int numRows = in.nextInt();
+        String s = "PAYPALISHIRING";
+        int numRows = 3;
         System.out.print(convert(s, numRows));
     }
 
     public static String convert(String s, int numRows) {
-        String ns = "";
-        int length = s.length();
-        if(numRows==1) return s;
-        int col = length / (2 * numRows - 2);
-        int row = length % (2 * numRows - 2);
+        char[] c = s.toCharArray();
+        int len = c.length;
+        StringBuffer[] sb = new StringBuffer[numRows];
+        for (int i = 0; i < sb.length; i++) sb[i] = new StringBuffer();
 
-        for (int i = 0; i < numRows; i++) {
-            int n = 0;
-            for (int j = 0; j <= col; j++) {
-                ns += s.charAt(2 * (numRows - 1) * j + i);
-                if ((i != 0) && (i != numRows - 1)) {
-                    if ((2 * (numRows - 1) * j + i + 2 * (numRows - 1 - i))<length){
-                        ns += s.charAt(2 * (numRows - 1) * j + i + 2 * (numRows - 1 - i));
-                    }
-                }
-            }
+        int i = 0;
+        while (i < len) {
+            for (int idx = 0; idx < numRows && i < len; idx++) // vertically down
+                sb[idx].append(c[i++]);
+            for (int idx = numRows-2; idx >= 1 && i < len; idx--) // obliquely up
+                sb[idx].append(c[i++]);
         }
-
-        return ns;
+        for (int idx = 1; idx < sb.length; idx++)
+            sb[0].append(sb[idx]);
+        return sb[0].toString();
     }
 }
