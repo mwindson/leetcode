@@ -16,37 +16,31 @@ public class Problem021 {
     }
 
     public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        ListNode root = new ListNode(Math.min(l1.val, l2.val));
-        ListNode currentNode = root;
-        if (l1.val <= l2.val) {
-            l1 = l1.next;
-        } else {
-            l2 = l2.next;
-        }
-        while (l1 != null || l2 != null) {
-            if (l1 == null && l2 != null) {
-                currentNode = insertNode(currentNode, l2.val);
+        ListNode tmp = null;
+        ListNode result = tmp;
+        int minVal = 0;
+        while (!(l1 == null && l2 == null)) {
+            if (l1 == null) {
+                minVal = l2.val;
                 l2 = l2.next;
-            } else if (l1 != null && l2 == null) {
-                currentNode = insertNode(currentNode, l1.val);
+            } else if (l2 == null) {
+                minVal = l1.val;
+                l1 = l1.next;
+            } else if (l1.val <= l2.val) {
+                minVal = l1.val;
                 l1 = l1.next;
             } else {
-                if (l1.val <= l2.val) {
-                    currentNode = insertNode(currentNode, l1.val);
-                    l1 = l1.next;
-                } else {
-                    currentNode = insertNode(currentNode, l2.val);
-                    l2 = l2.next;
-                }
+                minVal = l2.val;
+                l2 = l2.next;
+            }
+            if (tmp == null) {
+                tmp = new ListNode(minVal);
+                result = tmp;
+            } else {
+                tmp.next = new ListNode(minVal);
+                tmp = tmp.next;
             }
         }
-        return root;
-    }
-
-    private static ListNode insertNode(ListNode l, int num) {
-        ListNode node = new ListNode(num);
-        l.next = node;
-        l = node;
-        return l;
+        return result;
     }
 }
