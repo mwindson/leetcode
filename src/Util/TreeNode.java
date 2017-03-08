@@ -1,5 +1,9 @@
 package Util;
 
+/**
+ * Created by mwindson on 2017/3/8.
+ */
+
 import java.text.MessageFormat;
 import java.util.*;
 
@@ -12,7 +16,7 @@ public class TreeNode {
     public TreeNode left;
     public TreeNode right;
 
-    TreeNode(int x) {
+    public TreeNode(int x) {
         val = x;
     }
 
@@ -226,3 +230,4 @@ public class TreeNode {
         }
     }
 }
+
