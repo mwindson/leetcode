@@ -1,41 +1,32 @@
 package Problem101_200;
 
-import javax.swing.tree.TreeNode;
+import Util.*;
 
 /**
  * Created by Administrator on 2016/12/4.
  */
-// todo 待完成 
 public class Problem104 {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
+    public static void main(String[] args) {
+        TreeNode tree = TreeNode.parse("[1]");
+        System.out.println(maxDepth(tree));
     }
 
-    public int maxDepth(TreeNode root) {
+    public static int maxDepth(TreeNode root) {
         int maxdepth = 0;
         if (root == null) return 0;
-        TreeNode node = root;
-        countDepth(root, 0, maxdepth);
-
-        return maxdepth;
+        return countDepth(root);
     }
 
-    public void countDepth(TreeNode node, int depth, int maxdepth) {
+    public static int countDepth(TreeNode node) {
+        int leftDepth = 0, rightDepth = 0;
         if (node.left != null) {
-            depth++;
-            countDepth(node.left, depth, maxdepth);
-        } else if (node.right != null) {
-            depth++;
-            countDepth(node.right, depth, maxdepth);
-        } else {
-            maxdepth = Math.max(maxdepth, depth);
+            leftDepth = countDepth(node.left) + 1;
         }
+        if (node.right != null) {
+            rightDepth = countDepth(node.right) + 1;
+        }
+        if (node.left == null && node.right == null)
+            return 1;
+        return Math.max(leftDepth, rightDepth);
     }
-    
 }
