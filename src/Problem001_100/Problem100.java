@@ -1,18 +1,11 @@
 package Problem001_100;
 
+import Util.*;
+
 /**
  * Created by mwindson on 2017/1/26.
  */
 public class Problem100 {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 
     public static boolean isSameTree(TreeNode p, TreeNode q) {
         if (p == null && q == null) {

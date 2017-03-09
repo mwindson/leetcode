@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-import Util.TreeNode;
+import Util.*;
 
 /**
  * Created by mwindson on 2017/3/6.
