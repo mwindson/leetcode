@@ -27,4 +27,12 @@ public class Interval {
         }
         return intervals;
     }
+
+    public static Interval[] arraysToIntervalsArray(int[][] arrays) {
+        Interval[] intervals = new Interval[arrays.length];
+        for (int i = 0; i < arrays.length; i++) {
+            intervals[i] = new Interval(arrays[i][0], arrays[i][1]);
+        }
+        return intervals;
+    }
 }
