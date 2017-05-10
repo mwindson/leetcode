@@ -8,7 +8,7 @@ import java.util.Arrays;
  */
 public class Problem506 {
     public static void main(String[] args) {
-        int[] nums = {5, 4, 3, 2, 1};
+        int[] nums = {5, 4, 6, 10, 1};
         System.out.println(findRelativeRanks(nums));
     }
 
@@ -19,7 +19,7 @@ public class Problem506 {
         }
 
         // 根据nums数组得分对index数组进行排序
-        Arrays.sort(index, (a, b) -> (nums[a] - nums[b]));
+        Arrays.sort(index, (a, b) -> (nums[b] - nums[a]));
 
         String[] result = new String[nums.length];
 
