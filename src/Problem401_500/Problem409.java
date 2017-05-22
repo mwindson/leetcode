@@ -1,29 +1,30 @@
 package Problem401_500;
 
+import java.util.HashSet;
+
 /**
  * Created by Administrator on 2016/12/16.
  */
 public class Problem409 {
-    public static void main(String[] args){
-        String s="abccccdd";
+    public static void main(String[] args) {
+        String s = "abccccdd";
         System.out.print(longestPalindrome(s));
     }
-    public static int longestPalindrome(String s) {
-        int maxPalindromeLength=1;
-        int index=0;
-        while (index<s.length()){
-            for(int length=maxPalindromeLength;length+index<s.length();length++){
-                String substring1=s.substring(index,index+length);
-                String substring2=s.substring(s.length()-index-length,s.length()-index);
-                if(substring1.equals(substring2)){
-                    maxPalindromeLength=length;
-                }else{
-                    break;
-                }
-            }
-            index++;
-        }
 
-        return maxPalindromeLength;
+    //built with those letters. 可以重排！！！
+    public static int longestPalindrome(String s) {
+        if (s == null || s.length() == 0) return 0;
+        HashSet<Character> hs = new HashSet<Character>();
+        int count = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (hs.contains(s.charAt(i))) {
+                hs.remove(s.charAt(i));
+                count++;
+            } else {
+                hs.add(s.charAt(i));
+            }
+        }
+        if (!hs.isEmpty()) return count * 2 + 1;
+        return count * 2;
     }
 }
