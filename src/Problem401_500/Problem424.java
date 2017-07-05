@@ -1,27 +1,30 @@
 package Problem401_500;
 
-import java.util.Arrays;
-
 /**
- * Created by mwindson on 2017/6/8.
+ * Created by mwindson on 2017/7/4.
  * https://leetcode.com/problems/longest-repeating-character-replacement/#/description
  */
 public class Problem424 {
     public static void main(String[] args) {
-        int[] nums = {1, 2, 3};
-        System.out.println(combinationSum4(nums, 7));
+        String s = "";
+        int k = 0;
+        System.out.println(characterReplacement(s, k));
     }
 
-    public static int combinationSum4(int[] nums, int target) {
-        int[] comb = new int[target + 1];
-        comb[0] = 1;
-        for (int i = 1; i < comb.length; i++) {
-            for (int j = 0; j < nums.length; j++) {
-                if (i - nums[j] >= 0) {
-                    comb[i] += comb[i - nums[j]];
-                }
+    public static int characterReplacement(String s, int k) {
+        int[] count = new int[26];
+        int maxCount = 0, maxLen = 0;
+        int start = 0;
+        for (int end = 0; end < s.length(); end++) {
+            count[s.charAt(end) - 'A']++;
+            maxCount = Math.max(maxCount, count[s.charAt(end) - 'A']);
+            // 不符合条件，窗口滑动
+            while (end - start + 1 - maxCount > k) {
+                count[s.charAt(start) - 'A']--;
+                start++;
             }
+            maxLen = Math.max(maxLen, end - start + 1);
         }
-        return comb[target];
+        return maxLen;
     }
 }
