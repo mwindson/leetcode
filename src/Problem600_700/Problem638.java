@@ -30,7 +30,7 @@ public class Problem638 {
             for (int j = 0; j < needs.size(); j++) {
                 if (needs.get(j) < offer.get(j)) {
                     tmp = null;
-                    break;
+                     break;
                 }
                 tmp.add(needs.get(j) - offer.get(j));
             }
