@@ -1,15 +1,20 @@
 package nowcoder;
 
 public class P7 {
-    public int JumpFloor(int target) {
-        if (target == 0) return 0;
-        if (target == 1) return 1;
-        int[] dp = new int[target + 1];
-        dp[1] = 1;
-        dp[2] = 2;
-        for (int i = 3; i <= target; i++) {
-            dp[i] = dp[i - 1] + dp[i - 2];
+    public static void main(String[] args) {
+        P7 p7 = new P7();
+        System.out.println(p7.Fibonacci(0));
+    }
+
+    public int Fibonacci(int n) {
+        if (n == 0) return 0;
+        return helper(n - 1, 0, 1);
+    }
+
+    private int helper(int n, int first, int second) {
+        if (n == 0) {
+            return second;
         }
-        return dp[target];
+        return helper(n - 1, second, first + second);
     }
 }
