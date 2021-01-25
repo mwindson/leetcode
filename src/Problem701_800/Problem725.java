@@ -1,7 +1,6 @@
 package Problem701_800;
 
 import Util.ListNode;
-import javafx.util.Pair;
 
 import java.util.Arrays;
 

@@ -1,7 +1,5 @@
 package Problem701_800;
 
-import com.sun.javafx.image.impl.IntArgb;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
