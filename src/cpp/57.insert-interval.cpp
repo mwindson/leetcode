@@ -64,11 +64,11 @@ public:
     vector<vector<int>> ans;
     int start = newInterval[0];
     int end = newInterval[1];
-    bool hasInserted = false;
     for (int i = 0; i < intervals.size(); i++) {
-      if (intervals[i][1] < start) {
+      if (intervals[i][1] < start) { // no need to merge
         ans.emplace_back(intervals[i]);
       } else if (intervals[i][0] > end) {
+        // no need to merge and change current
         ans.emplace_back(vector<int>{start, end});
         start = intervals[i][0];
         end = intervals[i][1];
